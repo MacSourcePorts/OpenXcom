@@ -33,6 +33,8 @@ namespace OpenXcom
 
 	ArticleStateTFTDFacility::ArticleStateTFTDFacility(ArticleDefinitionTFTD *defs) : ArticleStateTFTD(defs)
 	{
+		_txtInfo->setHeight(112);
+
 		RuleBaseFacility *facility = _game->getMod()->getBaseFacility(defs->id, true);
 
 		_lstInfo = new TextList(150, 50, 168, 150);
@@ -47,6 +49,7 @@ namespace OpenXcom
 		if (facility->getDefenseValue() > 0)
 		{
 			_lstInfo->setY(_lstInfo->getY() - 16);
+			_txtInfo->setHeight(_txtInfo->getHeight() - 16);
 			ss.str("");ss.clear();
 			ss << facility->getDefenseValue();
 			_lstInfo->addRow(2, tr("STR_DEFENSE_VALUE").c_str(), ss.str().c_str());
